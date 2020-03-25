@@ -8,7 +8,7 @@ Categories: <%= @post.categories.map(&:name).join(' ') %>
 <ul>
 <% @post.comments.each do |comment| %>
   <li>
-    <%= comment.user.username %> says: <%= comment.comment_content %>
+    <%= comment.user.username %>  <%= comment.content %>
   </li>
 <% end %>
 </ul>
