@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.find_or_create_by(post_params)
+    post = Post.create(post_params)
     redirect_to post
   end
 
@@ -22,17 +22,3 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, category_ids:[], categories_attributes: [:name])
   end
 end
-
-
-
-# <%= render 'form', post: Post.new %>
-# <%= form_for @post do |f| %>
-#     <%= f.label "Title" %>
-#     <%= f.text_field :title %>
-#     <%= f.label "Content" %>
-#     <%= f.text_field :content %>
-#     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-#     <%- f.submit %>
-#     <% end %>
-    
-#     <%= link_to post.title, post_path(@post.id) %>
