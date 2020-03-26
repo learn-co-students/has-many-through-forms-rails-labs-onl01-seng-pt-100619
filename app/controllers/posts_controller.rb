@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
+    post = Post.find_or_create_by(post_params)
     redirect_to post
   end
 
