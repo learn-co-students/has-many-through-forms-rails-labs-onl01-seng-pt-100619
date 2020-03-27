@@ -3,7 +3,7 @@
     <%= f.text_area :title %>
     <%= f.label "Post Content" %>
     <%= f.text_area :content %> 
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, include_blank: true %>
      <%= f.fields_for :categories, @post.categories.build do |categories_fields| %>
          <%= categories_fields.label :name, "Category" %>
          <%= categories_fields.text_field :name %>
