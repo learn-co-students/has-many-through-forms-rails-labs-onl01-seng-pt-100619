@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
+    # @unique_users = User.find(@post.comments.pluck(:user_id))
+    @comment = Comment.new
   end
 
   def index

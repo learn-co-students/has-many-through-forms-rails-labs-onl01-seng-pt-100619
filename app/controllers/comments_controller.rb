@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
 
   def create
+    if params[:comment][:user_id].blank?
+      params[:comment].delete(:user_id)
+    end
     comment = Comment.create(comment_params)
     redirect_to comment.post
   end
@@ -11,3 +14,11 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content, :post_id, :user_id, user_attributes:[:username])
   end
 end
+
+# <%= f.label :username%>
+# <%= f.text_field :username, list: "users_autocomplete" %>
+# <datalist id= "users_autocomplete"> 
+#     <%User.all.each do |user|%>
+#         <option value="<%= user.username%> ">
+#     <%end%>
+# </datalist>
